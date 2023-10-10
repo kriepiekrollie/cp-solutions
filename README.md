@@ -1,2 +1,4 @@
 # cp-solutions
-My solutions to various competitive programming problems.
+solutions to various competitive programming problems.
+
+i hope you can learn something by looking here :)

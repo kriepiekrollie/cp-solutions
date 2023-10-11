@@ -32,7 +32,7 @@ int main()
     cin >> n;
     for (int i = 0, a, b; i < n - 1; i++)
     {
-        cin >> a >>  b;
+        cin >> a >> b;
         g[a].push_back(b);
         g[b].push_back(a);
     }

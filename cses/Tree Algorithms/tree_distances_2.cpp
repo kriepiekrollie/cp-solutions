@@ -8,27 +8,29 @@ const int MAX_N = 200000;
 
 int n;
 vector<int> g[MAX_N + 1];
+int sz[MAX_N + 1], dist[MAX_N + 1];
+ll res[MAX_N + 1];
 
-int dist[MAX_N + 1];
-void dfs(int u, int p = -1)
+void dfs1(int u, int p = -1)
 {
+    sz[u] = 1;
     for (int v : g[u])
         if (v != p)
         {
             dist[v] = dist[u] + 1;
-            dfs(v, u);
+            dfs1(v, u);
+            sz[u] += sz[v];
         }
 }
 
-pair<int, int> furthest(int src)
+void dfs2(int u, int p = -1)
 {
-    dist[src] = 0;
-    dfs(src);
-    int ans = 1;
-    for (int i = 1; i <= n; i++)
-        if (dist[i] > dist[ans])
-            ans = i;
-    return {ans, dist[ans]};
+    for (int v : g[u])
+        if (v != p) 
+        {
+            res[v] = res[u] + n - 2 * sz[v];
+            dfs2(v, u);
+        }
 }
 
 int main()
@@ -43,7 +45,17 @@ int main()
         g[b].push_back(a);
     }
 
-    cout << furthest(furthest(1).first).second << '\n';
+    dfs1(1);
+
+    res[1] = 0;
+    for (int i = 1; i <= n; i++)
+        res[1] += dist[i];
+
+    dfs2(1);
+
+    for (int i = 1; i <= n; i++)
+        cout << res[i] << ' ';
+    cout << '\n';
 
     return 0;
 }

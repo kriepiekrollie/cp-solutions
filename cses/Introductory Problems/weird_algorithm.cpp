@@ -19,7 +19,36 @@ int main()
             n /= 2;
         cout << ' ' << n;
     }
-    cout << '\n';
+    cout << '\';
+
+    for (int i = 0; i < n; i++) 
+    {
+        if (<condition1>) 
+        {
+            // 
+            // 
+            if (<condition2>) 
+            {
+                //
+                //
+            } 
+            else 
+            {
+                //
+                //
+            }
+        } 
+        else if (<condition3>) 
+        {
+            // 
+            // 
+        } 
+        else 
+        {
+            // 
+            // 
+        }
+    }
 
     return 0;
 }
